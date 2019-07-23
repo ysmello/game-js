@@ -40,7 +40,7 @@ monsterImage.src = 'images/monster.png'
 
 //Objetos do jogo
 const hero = {
-    speed: 256 // movimento em pixels por segundo
+    speed: 256 //Movimento em pixels por segundo
 }
 
 const monster = {}
@@ -66,4 +66,31 @@ const reset = function() {
     //Posiciona o monstro randomicamente na tela
     monster.x = 32 + (Math.random() * (canvas.width - 64))
     monster.y = 32 + (Math.random() * (canvas.width - 64))
+}
+
+//Atualiza os objetos do jogo
+const update = function(modifier) {
+    if (38 in keysDown) { //Arrow up
+        hero.y -= hero.speed * modifier
+    }
+    if (40 in keysDown) { //Arrow down
+        hero.y += hero.speed * modifier
+    }
+    if (37 in keysDown) { //Arrow left
+        hero.x -= hero.speed * modifier
+    }
+    if (39 in keysDown) { //Arrow right
+        hero.x += hero.speed * modifier
+    }
+
+    //Verificando aproximacao dos personagens
+    if (
+        hero.x <= (monster.x + 32) 
+        && monster.x <= (hero.x + 32)
+        && hero.y <= (hero.y + 32)
+        && mosnter.y <= (monster.y + 32)
+    ) {
+        ++monsterCaught
+    } 
+
 }
