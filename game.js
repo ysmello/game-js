@@ -22,7 +22,7 @@ bgImage.src = 'images/background.png'
 let heroReady = false
 const heroImage = new Image()
 
-heroReady.onload = function() {
+heroImage.onload = function() {
     heroReady = true
 }
 
@@ -40,11 +40,10 @@ monsterImage.src = 'images/monster.png'
 
 //Objetos do jogo
 const hero = {
-    speed: 256 //Movimento em pixels por segundo
+    speed: 256, //Movimento em pixels por segundo
 }
 
 const monster = {}
-
 let monsterCaught = 0
 
 //Controles
@@ -65,7 +64,7 @@ const reset = function() {
 
     //Posiciona o monstro randomicamente na tela
     monster.x = 32 + (Math.random() * (canvas.width - 64))
-    monster.y = 32 + (Math.random() * (canvas.width - 64))
+    monster.y = 32 + (Math.random() * (canvas.height - 64))
 }
 
 //Atualiza os objetos do jogo
@@ -87,8 +86,8 @@ const update = function(modifier) {
     if (
         hero.x <= (monster.x + 32) 
         && monster.x <= (hero.x + 32)
-        && hero.y <= (hero.y + 32)
-        && mosnter.y <= (monster.y + 32)
+        && hero.y <= (monster.y + 32)
+        && monster.y <= (hero.y + 32)
     ) {
         ++monsterCaught
         reset()
@@ -101,8 +100,8 @@ const render = function() {
         ctx.drawImage(bgImage, 0, 0)
     }
     if (heroReady) {
-        ctx.drawImage(heroImage, hero.x, hero.y)
-    }
+		ctx.drawImage(heroImage, hero.x, hero.y);
+	}
     if (monsterReady) {
         ctx.drawImage(monsterImage, monster.x, monster.y)
     }
@@ -127,6 +126,10 @@ const main = function() {
 
     requestAnimationFrame(main)
 }
+
+// Suporte cross-browser para requestAnimationFrame
+var w = window;
+requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || w.mozRequestAnimationFrame;
 
 let then = Date.now()
 reset()
