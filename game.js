@@ -91,6 +91,26 @@ const update = function(modifier) {
         && mosnter.y <= (monster.y + 32)
     ) {
         ++monsterCaught
+        reset()
     } 
+}
 
+//Renderizando Imagens
+const render = function() {
+    if (bgReady) {
+        ctx.drawImage(bgImage, 0, 0)
+    }
+    if (heroReady) {
+        ctx.drawImage(heroImage, hero.x, hero.y)
+    }
+    if (monsterReady) {
+        ctx.drawImage(monsterImage, monster.x, monster.y)
+    }
+
+    //Points
+    ctx.fillStyle = 'rbg(250, 250, 250)'
+    ctx.font = '24px Helvetica'
+    ctx.textAlign = 'left'
+    ctx.textBaseline = 'top'
+    ctx.fillText('Monstros pegos: ' + monsterCaught, 32, 32)
 }
