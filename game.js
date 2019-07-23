@@ -114,3 +114,20 @@ const render = function() {
     ctx.textBaseline = 'top'
     ctx.fillText('Monstros pegos: ' + monsterCaught, 32, 32)
 }
+
+//Loop do jogo
+const main = function() {
+    const now = Date.now()
+    const delta = now - then
+
+    update(delta / 1000)
+    render()
+
+    then = now
+
+    requestAnimationFrame(main)
+}
+
+let then = Date.now()
+reset()
+main()
