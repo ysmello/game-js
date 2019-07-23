@@ -37,3 +37,14 @@ monsterImage.onload = function() {
 }
 
 monsterImage.src = 'image/monster.png'
+
+//Objetos do jogo
+const hero = {
+    speed: 256 // movimento em pixels por segundo
+}
+
+const monster = {}
+
+let monsterCaught = 0
+
+//Controles
