@@ -134,3 +134,5 @@ requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame
 let then = Date.now()
 reset()
 main()
+
+// :)
