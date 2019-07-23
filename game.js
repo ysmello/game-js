@@ -57,3 +57,13 @@ window.addEventListener('keydown', function(e) {
 window.addEventListener('keyup', function(e) {
     delete keysDown[e.keyCode]
 }, false)
+
+//Reseta o jogo quando o jogador pega o monstro
+const reset = function() {
+    hero.x = canvas.width / 2
+    hero.y = canvas.height / 2
+
+    //Posiciona o monstro randomicamente na tela
+    monster.x = 32 + (Math.random() * (canvas.width - 64))
+    monster.y = 32 + (Math.random() * (canvas.width - 64))
+}
