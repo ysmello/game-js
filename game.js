@@ -36,7 +36,7 @@ monsterImage.onload = function() {
     monsterReady = true
 }
 
-monsterImage.src = 'image/monster.png'
+monsterImage.src = 'images/monster.png'
 
 //Objetos do jogo
 const hero = {
@@ -48,3 +48,12 @@ const monster = {}
 let monsterCaught = 0
 
 //Controles
+const keysDown = {}
+
+window.addEventListener('keydown', function(e) {
+    keysDown[e.keyCode] = true
+}, false)
+
+window.addEventListener('keyup', function(e) {
+    delete keysDown[e.keyCode]
+}, false)
