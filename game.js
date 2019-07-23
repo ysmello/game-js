@@ -17,3 +17,23 @@ bgImage.onload = function() {
 }
 
 bgImage.src = 'images/background.png'
+
+//Imagem hero
+let heroReady = false
+const heroImage = new Image()
+
+heroReady.onload = function() {
+    heroReady = true
+}
+
+heroImage.src = 'images/hero.png'
+
+//Imagem monster
+let monsterReady = false
+const monsterImage = new Image()
+
+monsterImage.onload = function() {
+    monsterReady = true
+}
+
+monsterImage.src = 'image/monster.png'
